@@ -3,6 +3,79 @@ import os
 
 WEB_DIRECTORY = os.path.join(os.path.dirname(__file__), "web")
 
+# MASTER RESOLUTIONS LIST - Must be kept in sync with web/resolution_selector.js
+# This is the source of truth for backend validation
+MASTER_RESOLUTIONS_LIST = [
+    {"w": 480, "h": 480, "aspect_ratio": "1:1 Square"},
+    {"w": 512, "h": 512, "aspect_ratio": "1:1 Square"},
+    {"w": 768, "h": 768, "aspect_ratio": "1:1 Square"},
+    {"w": 896, "h": 896, "aspect_ratio": "1:1 Square"},
+    {"w": 1024, "h": 1024, "aspect_ratio": "1:1 Square"},
+    {"w": 1280, "h": 1280, "aspect_ratio": "1:1 Square"},
+    {"w": 1440, "h": 1440, "aspect_ratio": "1:1 Square"},
+    {"w": 512, "h": 288, "aspect_ratio": "16:9 Landscape"},
+    {"w": 768, "h": 432, "aspect_ratio": "16:9 Landscape"},
+    {"w": 896, "h": 512, "aspect_ratio": "16:9 Landscape"},
+    {"w": 1024, "h": 576, "aspect_ratio": "16:9 Landscape"},
+    {"w": 1280, "h": 704, "aspect_ratio": "16:9 Landscape"},
+    {"w": 1280, "h": 720, "aspect_ratio": "16:9 Landscape"},
+    {"w": 1344, "h": 768, "aspect_ratio": "16:9 Landscape"},
+    {"w": 1536, "h": 864, "aspect_ratio": "16:9 Landscape"},
+    {"w": 1600, "h": 896, "aspect_ratio": "16:9 Landscape"},
+    {"w": 288, "h": 512, "aspect_ratio": "9:16 Portrait"},
+    {"w": 432, "h": 768, "aspect_ratio": "9:16 Portrait"},
+    {"w": 512, "h": 896, "aspect_ratio": "9:16 Portrait"},
+    {"w": 576, "h": 1024, "aspect_ratio": "9:16 Portrait"},
+    {"w": 704, "h": 1280, "aspect_ratio": "9:16 Portrait"},
+    {"w": 720, "h": 1280, "aspect_ratio": "9:16 Portrait"},
+    {"w": 768, "h": 1344, "aspect_ratio": "9:16 Portrait"},
+    {"w": 864, "h": 1536, "aspect_ratio": "9:16 Portrait"},
+    {"w": 896, "h": 1600, "aspect_ratio": "9:16 Portrait"},
+    {"w": 512, "h": 384, "aspect_ratio": "4:3 Landscape"},
+    {"w": 640, "h": 480, "aspect_ratio": "4:3 Landscape"},
+    {"w": 768, "h": 576, "aspect_ratio": "4:3 Landscape"},
+    {"w": 960, "h": 720, "aspect_ratio": "4:3 Landscape"},
+    {"w": 1024, "h": 768, "aspect_ratio": "4:3 Landscape"},
+    {"w": 1152, "h": 864, "aspect_ratio": "4:3 Landscape"},
+    {"w": 1280, "h": 960, "aspect_ratio": "4:3 Landscape"},
+    {"w": 1408, "h": 1056, "aspect_ratio": "4:3 Landscape"},
+    {"w": 1536, "h": 1152, "aspect_ratio": "4:3 Landscape"},
+    {"w": 1600, "h": 1200, "aspect_ratio": "4:3 Landscape"},
+    {"w": 384, "h": 512, "aspect_ratio": "3:4 Portrait"},
+    {"w": 480, "h": 640, "aspect_ratio": "3:4 Portrait"},
+    {"w": 576, "h": 768, "aspect_ratio": "3:4 Portrait"},
+    {"w": 720, "h": 960, "aspect_ratio": "3:4 Portrait"},
+    {"w": 768, "h": 1024, "aspect_ratio": "3:4 Portrait"},
+    {"w": 864, "h": 1152, "aspect_ratio": "3:4 Portrait"},
+    {"w": 960, "h": 1280, "aspect_ratio": "3:4 Portrait"},
+    {"w": 1056, "h": 1408, "aspect_ratio": "3:4 Portrait"},
+    {"w": 1152, "h": 1536, "aspect_ratio": "3:4 Portrait"},
+    {"w": 1200, "h": 1600, "aspect_ratio": "3:4 Portrait"},
+    {"w": 480, "h": 320, "aspect_ratio": "3:2 Landscape"},
+    {"w": 720, "h": 480, "aspect_ratio": "3:2 Landscape"},
+    {"w": 768, "h": 512, "aspect_ratio": "3:2 Landscape"},
+    {"w": 960, "h": 640, "aspect_ratio": "3:2 Landscape"},
+    {"w": 1152, "h": 768, "aspect_ratio": "3:2 Landscape"},
+    {"w": 1200, "h": 800, "aspect_ratio": "3:2 Landscape"},
+    {"w": 1344, "h": 896, "aspect_ratio": "3:2 Landscape"},
+    {"w": 1440, "h": 960, "aspect_ratio": "3:2 Landscape"},
+    {"w": 1536, "h": 1024, "aspect_ratio": "3:2 Landscape"},
+    {"w": 320, "h": 480, "aspect_ratio": "2:3 Portrait"},
+    {"w": 480, "h": 720, "aspect_ratio": "2:3 Portrait"},
+    {"w": 512, "h": 768, "aspect_ratio": "2:3 Portrait"},
+    {"w": 640, "h": 960, "aspect_ratio": "2:3 Portrait"},
+    {"w": 768, "h": 1152, "aspect_ratio": "2:3 Portrait"},
+    {"w": 800, "h": 1200, "aspect_ratio": "2:3 Portrait"},
+    {"w": 896, "h": 1344, "aspect_ratio": "2:3 Portrait"},
+    {"w": 960, "h": 1440, "aspect_ratio": "2:3 Portrait"},
+    {"w": 1024, "h": 1536, "aspect_ratio": "2:3 Portrait"},
+    {"w": 1024, "h": 432, "aspect_ratio": "21:9 Cinematic"},
+    {"w": 1280, "h": 544, "aspect_ratio": "21:9 Cinematic"},
+    {"w": 1536, "h": 656, "aspect_ratio": "21:9 Cinematic"},
+    {"w": 1792, "h": 768, "aspect_ratio": "21:9 Cinematic"},
+    {"w": 2048, "h": 880, "aspect_ratio": "21:9 Cinematic"},
+]
+
 VAE_STRIDE = (4, 8, 8)
 PATCH_SIZE = (1, 2, 2)
 RADIAL_ALIGNMENT = VAE_STRIDE[1] * PATCH_SIZE[1]  # 16 for height/width
@@ -155,13 +228,19 @@ class Wan22ResolutionPresets:
     
     @classmethod
     def INPUT_TYPES(cls):
-        # The list of options for these dropdowns will be populated dynamically by the frontend.
-        # We provide placeholder lists here to ensure the widgets are created.
+        # Generate the full list of all possible values for backend validation
+        # The frontend will filter these dynamically, but the backend needs to accept all valid options
+        all_aspect_ratios = sorted(list(set(r["aspect_ratio"] for r in MASTER_RESOLUTIONS_LIST)))
+        all_resolutions = sorted(
+            list(set(f"{r['w']}x{r['h']}" for r in MASTER_RESOLUTIONS_LIST)),
+            key=lambda x: int(x.split('x')[0]) * int(x.split('x')[1])  # Sort by total pixel area
+        )
+        
         return {
             "required": {
                 "mode": (["Wan2.2 - 14B Models (I2V/T2V)", "Wan2.2 - 5B Model (TI2V)"], {"default": "Wan2.2 - 14B Models (I2V/T2V)"}),
-                "aspect_ratio": (["16:9 Landscape"], {"default": "16:9 Landscape"}),
-                "resolution": (["1280x720"], {"default": "1280x720"}),
+                "aspect_ratio": (all_aspect_ratios, {"default": "16:9 Landscape"}),
+                "resolution": (all_resolutions, {"default": "1280x720"}),
             }
         }
 
