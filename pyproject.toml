@@ -1,0 +1,25 @@
+# pyproject.toml
+
+[project]
+
+name = "wan22-resolution-presets"
+
+version = "1.0.0"
+
+description = "Provides curated, model-safe resolution presets for the Wan2.2 video model family."
+
+license = { file = "LICENSE.txt" }
+
+dependencies = []
+
+[project.urls]
+
+Repository = "https://github.com/opj161/ComfyUI-Wan22ResolutionPresets"
+
+[tool.comfy]
+
+PublisherId = "opj161"
+
+DisplayName = "Wan2.2 Resolution Presets"
+
+Icon = "https://raw.githubusercontent.com/opj161/ComfyUI-Wan22ResolutionPresets/main/icon.png"
